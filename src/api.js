@@ -10,7 +10,7 @@
 
 // import { render } from '@testing-library/react';
 import React from "react";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 
 // async function postData(url = '', data = {}){
 //     const response = await fetch(url, {
@@ -108,33 +108,42 @@ class MyComponent extends React.Component {
             "http://localhost:8080/createAccount?userName=dan@gmail.com&type=current",
             {
                 method: "POST",
-                mode: "no-cors",
+                // mode: "no-cors",
             }
         ).then((res) => {
-            console.log(res);
+            // console.log(res);
 
+            // res.text().then((text) => {
+            //     // console.log(`result text ${text}`);
+            //     console.log(text);
+            // });
             res.text().then((text) => {
-                console.log(text);
+                this.setState({
+                    isLoaded: true,
+                    message: text,
+                });
             });
         });
     }
 
     render() {
-        const { error, isLoaded, items } = this.state;
+        const { error, isLoaded, message } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading...</div>;
         } else {
-            return (
-                <ul>
-                    {items.map((item) => (
-                        <li key={item.id}>
-                            {item.name} {item.price}
-                        </li>
-                    ))}
-                </ul>
-            );
+            console.log(`message: ${message}`);
+            return <p>{ message }</p>;
+            // return (
+            //     <ul>
+            //         {items.map((item) => (
+            //             <li key={item.id}>
+            //                 {item.name} {item.price}
+            //             </li>
+            //         ))}
+            //     </ul>
+            // );
         }
     }
 }

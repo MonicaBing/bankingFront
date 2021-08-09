@@ -95,7 +95,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Login from './login.js';
 import MyComponent from './api.js'
-// import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
