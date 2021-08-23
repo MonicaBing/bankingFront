@@ -1,4 +1,3 @@
-
 import React from "react";
 //import ReactDOM from "react-dom";
 
@@ -6,72 +5,83 @@ class MyComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            error: null,
-            isLoaded: false,
-            items: [],
+            // error: null,
+            // isLoaded: false,
+            items: [], // return ite,s 
         };
-    };
+    }
+
+    // auto display -- sucess compile but need to dislplay them
+    // result = list from backend
     componentDidMount(){
+        fetch(
+            "http://localhost:8080/displayTransaction?receive=53574606-2fdd-4612-85bf-ddda45882865",
+            {
+                method: "GET",
+                // mode: "no-cors",
+            }
+        )
+        .then(res => {
+            console.log(res)
+            return res
+        })
+        .then(res => res.json()) // we always want json 
+        .then((res) => {
+                    this.setState({ // trigger render, by setting the state of the page
+                        items: res.items
+                    });
+            console.log('display transaction request done') 
+            console.log(res) 
+            console.log(this.items) 
+        }) 
+    }
+
+    // method not function becasue inside class, no need to define it
+    createAccountOnClick(event) {
         fetch(
             "http://localhost:8080/createAccount?userName=dan@gmail.com&type=current",
             {
                 method: "POST",
-                // mode: "no-cors",
             }
-        ).then((res) => {
-            console.log(res);
-            res.text().then((text) => {
-                this.setState({
-                    isLoaded: true,
-                    message: text,
-                });
-            });
-        });
+        );
+        console.log("account created");
     }
 
     render() {
-        window.onload=function(){
+        // need to define function
 
-            const buttonElement = document.getElementById('btn');
-        
-            function myFunction(opts){
-                fetch(
-                    "http://localhost:8080/createAccount?userName=dan@gmail.com&type=current",
-                    {
-                        method: "POST",
-                    }
-                )
-                console.log('done')
-            };
-            // to make sure it is not null
-            if (buttonElement){
-            buttonElement.addEventListener('click', myFunction)};
-        }
+        // try to ignore the message -> add it back stop auto
 
-        const { error, isLoaded, message } = this.state;
-        if (error) {
-            return <div>Error: {error.message}</div>;
-        } else if (!isLoaded) {
-            return <div>Loading...</div>;
-        } else {
-            console.log(`message: ${message}`);
-            return (
-                <div>
-                    
-                    link the request to the button
-                    <button id = 'btn'> click here! </button>
-                    <p id="funcOutput"></p>
-                    <p id="handleEvtOutput"></p>
+        // const {items} = this.state;
 
-                    <h3>status of the request</h3>
-                    <p>{ message }</p>
-                </div>
-            )
-        }
+        const {items} = this.state;
+        console.log('1')
+        console.log(items); // not working - returnf status not items
+        console.log('2')
+
+        return (
+            <div>
+                <button onClick={this.createAccountOnClick} id="btn">
+                    click here!
+                </button>
+
+                {/* <ul>
+                    {items.map(item=>(
+                        <li key={item.id}>
+                            {item.payment} 
+                        </li>
+                    ))}
+                </ul> */}
+
+            </div>
+        );
     }
+
 }
 
 export default MyComponent;
 
-
-// add button send request 
+// KATHY 
+// figure out why not rendering after set State 
+// display the transaction successfully 
+// due with the separate table problem in back end 
