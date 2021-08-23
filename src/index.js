@@ -97,6 +97,7 @@ import Login from './login.js';
 import MyComponent from './api.js'
 import reportWebVitals from './reportWebVitals';
 
+// everything inside DOM will be managed by React DOM and show on screen
 ReactDOM.render(
   <React.StrictMode>
     <Login />
@@ -109,3 +110,5 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// main 
