@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button{
+  margin: 5px
+}
+
+/* 
+table styling */
+table.spec-table {border: 1px solid #fff; width: 100%; margin: 0 0 4em 0}
+table.spec-table>tr>th {background-color: rgb(52, 105, 219); color: #fff; font-weight: bold;}
+table.spec-table tr td:nth-child(even) {background: rgb(255, 255, 255)}
+table.spec-table tr td:nth-child(odd) {background: rgb(255, 255, 255)}
+table.spec-table tr:first-child {background: #666; color: #fff; font-weight: bold}
+table.spec-table th, td {font-size: .9em; padding: 7px; text-align: left;}
+
+/* label, input {
+  display: block;
+}
+
+label {
+  margin-bottom: 10px;
+} */

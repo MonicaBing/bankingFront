@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 const Login = () => {
+//function 
+
     //   const userId = '';
     const [userId, setuserId] = useState("");
     const submit = (event) => {
@@ -21,8 +23,11 @@ const Login = () => {
         sessionStorage.removeItem('userId');
     }
 
+    // display
+
     return (
-        <div className="Login">
+        // this is one element
+        <div className="Login"> 
             <form onSubmit={submit}>
                 <label>
                     Username:
@@ -31,7 +36,7 @@ const Login = () => {
                 <input type="submit" value="Submit" />
             </form>
 
-            <button onClick={logout}> Logout</button>
+            <button onClick={logout}> Logout</button> 
 
         </div>
 
@@ -41,4 +46,4 @@ const Login = () => {
 
 export default Login;
 
-// call API from web -> try create account 
+// export it to index.js
