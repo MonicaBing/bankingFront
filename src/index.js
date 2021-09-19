@@ -5,14 +5,16 @@ import Login from './login.js';
 import TransactionTable from './displayTransaction.js'
 import reportWebVitals from './reportWebVitals';
 import CreateAccountButton from './createAccount.js'
+import HomePage from './homePage.js';
 
 
 // everything inside DOM will be managed by React DOM and show on screen
 ReactDOM.render(
   <React.StrictMode>
-    <Login />
+    {/* <Login />
     <TransactionTable />
-    <CreateAccountButton />
+    <CreateAccountButton /> */}
+    <HomePage/>
   </React.StrictMode>,
   document.getElementById('root')
 );
