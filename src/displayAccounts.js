@@ -2,37 +2,50 @@ import React from "react";
 import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 
 
-class UsersTable extends React.Component {
+class AccountsTable extends React.Component {
+
+
+    // kathy - set state failure?
+    // locate the click and its params
+
     constructor(props) {
         super(props);
         this.state = {
             items: 'init', 
             isLoaded: false,
+            userId : props.match.params.user_id // string 
+            //fa2e3041-c130-4663-aa5e-4b4e5bad9bbe
         };
+        console.log(props)
+        console.log(props.match.params.user_id)
+        console.log(this.state.userId)
     }
 
-    // auto display users
+    
+    // auto display accounts
     async componentDidMount(){
-        const items =  await fetch(
-            "http://localhost:8080/displayUsers", 
+    
+        const items =  await fetch( 
+            // `http://localhost:8080/displayAccounts`, 
+            `http://localhost:8080/displayAccounts?userId=${this.state.userId}`, 
             {
                 method: "GET",
             }
         )
-        .then(res => res.json())  // no need await if this is used
+        .then(res => res.json())  
 
     // cannot call set state in promise 
-    this.setState({ // trigger render, by setting the state of the page
+    this.setState({ 
         isLoaded: true, 
-        items: items // make sure its returned in the fetch
+        items: items 
     }, () => {
-        console.log('display users success');
+        console.log('display accounts success');
     })
     }
 
     // need to define function
     render() {
-        console.log('display user render');
+        console.log('display accounts render');
 
         const items = this.state.items;
         const isLoaded = this.state.isLoaded;
@@ -40,30 +53,26 @@ class UsersTable extends React.Component {
         // in case render before fetch, empty result
         if(!isLoaded){ // if not loaded
             console.log('display users if loop')
-            return <div> Loading users...</div>;
+            return <div> Loading accounts...</div>;
         }else{
-            console.log('display users else loop')
+            console.log('display accounts else loop')
             return(
                 <table class="spec-table" id="here_table">
                     <tr>
+                            <th> Account ID</th>
                             <th> User ID</th>
-                            <th> Name</th>
-                            <th> User Name</th>
+                            <th> Account Type</th>
+                            <th> Balance</th>
                     </tr>
                     {items.map(item => (
                         <> 
                             <tr>
-                                {/* from TransactionDto */}
-  
-                                {/* <td>
-                                {/* <Link to={`/name/${index + 1}`}>{person.name}'s Page</Link> */}
-                                    {/* <Link to={`/id/${item.id}`}>{item.id}</Link>
-                                </td> */} 
                                 <td>
-                                    <Link to={`/users/${item.id}/accounts`}>{item.id}</Link>
+                                    <Link to={`/users/${item.userId}/accounts/${item.id}`}>{item.id}</Link> 
                                 </td> 
-                                <td>{item.name}</td>
-                                <td>{item.userName}</td>
+                                <td>{item.userId}</td>
+                                <td>{item.type}</td>
+                                <td>{item.balance}</td>
                                 
                             </tr>
                            
@@ -76,6 +85,5 @@ class UsersTable extends React.Component {
     }
 }
 
-export default UsersTable;
+export default AccountsTable;
 
-// display UUID - backend problem
