@@ -4,7 +4,6 @@ import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 
 class AccountsTable extends React.Component {
 
-
     // kathy - set state failure?
     // locate the click and its params
 
@@ -13,12 +12,12 @@ class AccountsTable extends React.Component {
         this.state = {
             items: 'init', 
             isLoaded: false,
-            userId : props.match.params.user_id // string 
+            userId : props.props.user_id // string 
             //fa2e3041-c130-4663-aa5e-4b4e5bad9bbe
         };
-        console.log(props)
-        console.log(props.match.params.user_id)
-        console.log(this.state.userId)
+        // console.log(props)
+        // console.log(props.match.params.user_id)
+        // console.log(this.state.userId)
     }
 
     
@@ -78,7 +77,9 @@ class AccountsTable extends React.Component {
                            
                         </>
                     ))}
+                    
                </table>
+
                
             )
         }

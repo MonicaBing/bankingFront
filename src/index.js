@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Login from './login.js';
+import Login from './createUser.js';
 import TransactionTable from './displayTransaction.js'
 import reportWebVitals from './reportWebVitals';
 import CreateAccountButton from './createAccount.js'
@@ -15,6 +15,7 @@ ReactDOM.render(
     <TransactionTable />
     <CreateAccountButton /> */}
     <HomePage/>
+    {/* <Login/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
@@ -25,3 +26,8 @@ ReactDOM.render(
 reportWebVitals();
 
 // main 
+
+// 24 nov 
+// 1. organise everything, keep a directory for each pauir of function 
+// 2. use accounts as an example, do the same for all the createAccounts function 
+// 3. split them into different pages 

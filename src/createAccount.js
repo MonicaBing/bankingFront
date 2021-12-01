@@ -1,7 +1,7 @@
 import React from "react";
 
 
-class CreateAccountButton extends React.Component {
+class CreateAccount extends React.Component {
 
     constructor(props) {
         super(props);
@@ -32,42 +32,42 @@ class CreateAccountButton extends React.Component {
         })
     }
 
-    setMovement=(event) => {
-        this.setState({
-            movement: event.target.value,
-        })
-    }
+    // setMovement=(event) => {
+    //     this.setState({
+    //         movement: event.target.value,
+    //     })
+    // }
 
-    setReceiveId = (event) =>{
-        this.setState({
-            receiveId: event.target.value,
-        })
-    }
+    // setReceiveId = (event) =>{
+    //     this.setState({
+    //         receiveId: event.target.value,
+    //     })
+    // }
 
-    setPayeeId = (event)=>{
-        this.setState({
-            payeeId: event.target.value,
-        })
+    // setPayeeId = (event)=>{
+    //     this.setState({
+    //         payeeId: event.target.value,
+    //     })
 
-    }
+    // }
 
-    setPayment = (event) =>{
-        this.setState({
-            payment: event.target.value,
-        })
-    }
+    // setPayment = (event) =>{
+    //     this.setState({
+    //         payment: event.target.value,
+    //     })
+    // }
 
-    setReceiveType = (event)=>{
-        this.setState({
-            receiveType: event.target.value,
-        })
-    }
+    // setReceiveType = (event)=>{
+    //     this.setState({
+    //         receiveType: event.target.value,
+    //     })
+    // }
 
-    setPayeeType = (event)=>{
-        this.setState({
-            receiveType: event.target.value,
-        })
-    }
+    // setPayeeType = (event)=>{
+    //     this.setState({
+    //         receiveType: event.target.value,
+    //     })
+    // }
 
 
 
@@ -90,48 +90,48 @@ class CreateAccountButton extends React.Component {
     // get accoutn for user - get
 
     // deposit withftaw by name - post 
-    depositWithdrawByName = (event) => {
-        event.preventDefault();
+    // depositWithdrawByName = (event) => {
+    //     event.preventDefault();
 
-        // kathy@gmail.com, 5, current 
-        fetch(
-            `http://localhost:8080/depositWithdrawByName?userName=${this.state.userName}&movement=${this.state.movement}&type=${this.type}`,
-            {
-                method: "POST",
-            }
-        ).then(() => console.log("deposit withdraw by name success"));
+    //     // kathy@gmail.com, 5, current 
+    //     fetch(
+    //         `http://localhost:8080/depositWithdrawByName?userName=${this.state.userName}&movement=${this.state.movement}&type=${this.type}`,
+    //         {
+    //             method: "POST",
+    //         }
+    //     ).then(() => console.log("deposit withdraw by name success"));
 
-    }
+    // }
 
-    // payment id 
-    paymentId = (event) => {
-        event.preventDefault();
+    // // payment id 
+    // paymentId = (event) => {
+    //     event.preventDefault();
 
-        // fa2e3041-c130-4663-aa5e-4b4e5bad9bbe, 9a0285aa-0357-41d0-b07e-c45fc3e4ddf5
-        // 1, current, current 
-        fetch(
-            `http://localhost:8080/paymentId?receive=${this.state.receiveId}&payee=${this.state.payeeId}&payment=${this.state.payment}&payeeType=${this.state.payeeType}&receiveType=${this.state.receiveType}`,
-            {
-                method: "POST",
-            }
-        ).then(() => console.log("payment ID success"));
+    //     // fa2e3041-c130-4663-aa5e-4b4e5bad9bbe, 9a0285aa-0357-41d0-b07e-c45fc3e4ddf5
+    //     // 1, current, current 
+    //     fetch(
+    //         `http://localhost:8080/paymentId?receive=${this.state.receiveId}&payee=${this.state.payeeId}&payment=${this.state.payment}&payeeType=${this.state.payeeType}&receiveType=${this.state.receiveType}`,
+    //         {
+    //             method: "POST",
+    //         }
+    //     ).then(() => console.log("payment ID success"));
 
-    }
+    // }
 
     // payment name - post - do this now
-    paymentName = (event) => {
-        event.preventDefault();
+    // paymentName = (event) => {
+    //     event.preventDefault();
 
-        // kathy@gmail.com, dan@gmail.com, 5, current, current
+    //     // kathy@gmail.com, dan@gmail.com, 5, current, current
 
-        fetch(
-            `http://localhost:8080/paymentName?payee={this.state.receiveId}&receive={this.state.receiveId}&payment={this.state.receiveId}&payeeType={this.state.receiveId}&receiveType={this.state.receiveId}`,
-            {
-                method: "POST",
-            }
-        ).then(() => console.log("payment ID success"));
+    //     fetch(
+    //         `http://localhost:8080/paymentName?payee={this.state.receiveId}&receive={this.state.receiveId}&payment={this.state.receiveId}&payeeType={this.state.receiveId}&receiveType={this.state.receiveId}`,
+    //         {
+    //             method: "POST",
+    //         }
+    //     ).then(() => console.log("payment ID success"));
 
-    }
+    // }
 
     // net value - get 
 
@@ -144,11 +144,11 @@ class CreateAccountButton extends React.Component {
         {/* // create account */}
             <form onSubmit={this.createAccount}>
                 <label>
-                    Username:
+                    Username(email):
                     <input value={this.userName} onChange={this.setUserName}/>
                 </label>
                 <label>
-                    Type:
+                    AccountType:
                     <input value={this.type} onChange={this.setType}/>
                 </label>
                 <input type="submit" value="create account"/>
@@ -156,7 +156,7 @@ class CreateAccountButton extends React.Component {
 
 {/* 
         deposit withdraw by name   */}
-            <form onSubmit={this.depositWithdrawByName}>
+            {/* <form onSubmit={this.depositWithdrawByName}>
                 <label>
                     Username:
                     <input value={this.userName} onChange={this.setUserName}/>
@@ -170,11 +170,11 @@ class CreateAccountButton extends React.Component {
                     <input value={this.type} onChange={this.setType}/>
                 </label>
                 <input type="submit" value="deposit withdraw by name"/>
-            </form>
+            </form> */}
 
             {/* 
         payment ID   */}
-            <form onSubmit={this.paymentId}>
+            {/* <form onSubmit={this.paymentId}>
                 <label>
                     Receive ID :
                     <input value={this.receiverId} onChange={this.setReceiveId}/>
@@ -196,18 +196,14 @@ class CreateAccountButton extends React.Component {
                     <input value={this.payeeType} onChange={this.setPayeeType}/>
                 </label>
                 <input type="submit" value="payment ID"/>
-            </form>
+            </form> */}
 
         </>
-
-            
-
-
         )
     }
 }
 
-export default CreateAccountButton;
+export default CreateAccount;
 
 
 
