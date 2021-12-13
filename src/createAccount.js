@@ -8,13 +8,7 @@ class CreateAccount extends React.Component {
         this.state = {
             userName:" ",
             type: " ",
-            movement: 0,
-            receiveId: " ", // user ID, not account id
-            payeeId : " ",
-            payment : 0,
-            payeeType : " ",
-            receiveType: " ",
-
+            userId : props.props.user_id // string 
         };
     }
 
@@ -32,45 +26,6 @@ class CreateAccount extends React.Component {
         })
     }
 
-    // setMovement=(event) => {
-    //     this.setState({
-    //         movement: event.target.value,
-    //     })
-    // }
-
-    // setReceiveId = (event) =>{
-    //     this.setState({
-    //         receiveId: event.target.value,
-    //     })
-    // }
-
-    // setPayeeId = (event)=>{
-    //     this.setState({
-    //         payeeId: event.target.value,
-    //     })
-
-    // }
-
-    // setPayment = (event) =>{
-    //     this.setState({
-    //         payment: event.target.value,
-    //     })
-    // }
-
-    // setReceiveType = (event)=>{
-    //     this.setState({
-    //         receiveType: event.target.value,
-    //     })
-    // }
-
-    // setPayeeType = (event)=>{
-    //     this.setState({
-    //         receiveType: event.target.value,
-    //     })
-    // }
-
-
-
     // trigger the fetch, i.e. no need the function itself
     // create Account -> AccountRoutes.kt
     createAccount = (event) => {
@@ -79,7 +34,7 @@ class CreateAccount extends React.Component {
 
         // remember to take it out from the state
         fetch(
-            `http://localhost:8080/createAccount?userName=${this.state.userName}&type=${this.state.type}`,
+            `http://localhost:8080/createAccount?userName=${this.userId}&type=${this.state.type}`,
             {
                 method: "POST",
             }
@@ -143,10 +98,10 @@ class CreateAccount extends React.Component {
         <>
         {/* // create account */}
             <form onSubmit={this.createAccount}>
-                <label>
+                {/* <label>
                     Username(email):
                     <input value={this.userName} onChange={this.setUserName}/>
-                </label>
+                </label> */}
                 <label>
                     AccountType:
                     <input value={this.type} onChange={this.setType}/>

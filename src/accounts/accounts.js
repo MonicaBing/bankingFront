@@ -27,7 +27,7 @@ class Accounts extends React.Component {
         return (
             <div>
                 <AccountsTable props = {props}/>
-                <CreateAccount />
+                <CreateAccount props = {props}/>
             </div>
         );
     }

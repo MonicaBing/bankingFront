@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 import UsersTable from "../users/usersTable";
-import CreateUser from "../createUser"
+import CreateUser from "../createUser";
+import DepositWithdraw from "../depositWithdraw"
+import PaymentId from "../paymentId"
 
 
 // this is just the render bit, not the actual function
@@ -26,6 +28,8 @@ class Users extends React.Component {
             <div>
                 <UsersTable />
                 <CreateUser />
+                <DepositWithdraw />
+                <PaymentId />
             </div>
         );
     }
