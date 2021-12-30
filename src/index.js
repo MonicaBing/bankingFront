@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Login from './createUser.js';
+// import Login from './createUser.js';
 import TransactionTable from './displayTransaction.js'
 import reportWebVitals from './reportWebVitals';
-import CreateAccountButton from './createAccount.js'
+// import CreateAccountButton from './createAccount.js'
 import HomePage from './homePage.js';
 
 

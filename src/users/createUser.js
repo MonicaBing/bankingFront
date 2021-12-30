@@ -1,10 +1,11 @@
 import React from "react";
-
+import UsersTable from "./usersTable";
 
 class CreateUsers extends React.Component {
 
     constructor(props) {
         super(props);
+        this.usersTable = props.usersTable;
         this.state = {
             userName:" ",
             name: " ",
@@ -25,6 +26,13 @@ class CreateUsers extends React.Component {
         })
     }
 
+    // ------------------
+    refreshPage(){
+        // window.location.reload(false);
+        this.usersTable.refreshPage()
+        // this.usersTable.componentDidMount()
+
+    }
 
     // trigger the fetch, i.e. no need the function itself
     // create Account -> AccountRoutes.kt
@@ -37,8 +45,12 @@ class CreateUsers extends React.Component {
             {
                 method: "POST",
             }
-        ).then(() => console.log("user created"));
-
+        ).then(() => {
+            console.log("user created")
+            this.refreshPage() // ---------------
+        }
+        );
+        
     }
     
     render(){
@@ -46,7 +58,7 @@ class CreateUsers extends React.Component {
             
         <>
         {/* // create user */}
-            <form onSubmit={this.createUser}>
+            <form onSubmit={this.createUser}  >
                 <label>
                     Username(email):
                     <input value={this.userName} onChange={this.setUserName}/>
@@ -58,49 +70,6 @@ class CreateUsers extends React.Component {
                 <input type="submit" value="create user"/>
             </form>
 
-{/* 
-        deposit withdraw by name   */}
-            {/* <form onSubmit={this.depositWithdrawByName}>
-                <label>
-                    Username:
-                    <input value={this.userName} onChange={this.setUserName}/>
-                </label>
-                <label>
-                    Movement:
-                    <input value={this.movement} onChange={this.setMovement}/>
-                </label>
-                <label>
-                    Type:
-                    <input value={this.type} onChange={this.setType}/>
-                </label>
-                <input type="submit" value="deposit withdraw by name"/>
-            </form> */}
-
-            {/* 
-        payment ID   */}
-            {/* <form onSubmit={this.paymentId}>
-                <label>
-                    Receive ID :
-                    <input value={this.receiverId} onChange={this.setReceiveId}/>
-                </label>
-                <label>
-                    Payee ID :
-                    <input value={this.payeeId} onChange={this.setPayeeId}/>
-                </label>
-                <label>
-                    Payment:
-                    <input value={this.payment} onChange={this.setPayment}/>
-                </label>
-                <label>
-                    Receive Type :
-                    <input value={this.receiveType} onChange={this.setReceiveType}/>
-                </label>
-                <label>
-                    Payee Type:
-                    <input value={this.payeeType} onChange={this.setPayeeType}/>
-                </label>
-                <input type="submit" value="payment ID"/>
-            </form> */}
 
         </>
         )

@@ -1,9 +1,9 @@
 import './App.css';
 import { Link, BrowserRouter as Router, Route } from "react-router-dom";
-import UsersTable from './users/displayUsers';
+import UsersTable from './users/displayUsers_useless';
 import TransactionTable from './displayTransaction';
 import Accounts from './accounts/accounts';
-import CreateAccount from './createAccount.js';
+// import CreateAccount from './accounts/createAccount.js';
 import Users from './users/users'
 
 function HomePage() {
@@ -28,11 +28,12 @@ function HomePage() {
 
 export default HomePage;
 
-// 2 API calls for both receive and payee 
-// sort them out in time order - all of them as a whole 
-// tidy up the url for consistency
+// dynamic update  
 
-// add a back button?
-// add create user, chec on line 13 
+// problem: there is no linkage between 2 classes, the isLoaded goes into false again (reset itself), therefore no able to refresh the page 
 
-// all functions in createAccounts
+// look at: users, createUsers, usersTable 
+
+// to do: read the documentatino  - REACT, it should be something very fundemental, not very complex, we are missing something 
+// add break points and see why it reset itself 
+// add it in the refresh page, and the set state place

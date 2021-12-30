@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, BrowserRouter as Router, Route } from "react-router-dom";
 import AccountsTable from "./accountTable";
-import CreateAccount from "../createAccount";
+import CreateAccount from "./createAccount"; // this doesnt work 
 
 class Accounts extends React.Component {
     // kathy - set state failure?
